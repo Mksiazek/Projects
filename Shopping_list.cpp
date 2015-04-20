@@ -19,7 +19,7 @@ void createList();
 void viewList();
 void appendList();
 void removeList();
-void printList();
+void textList();
 
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -29,7 +29,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	do
 	{
 		cout << "What would you like to do?\n"
-			<< "1.) Create a new list\n2.) View from the list\n3.) Append to the list\n4.) Remove the list\n5.) Print to the list\n6.) Exit\n";
+			<< "1.) Create a new list\n2.) View from the list\n3.) Append to the list\n4.) Remove the list\n5.) Text the list to the phone\n6.) Exit\n";
 
 		cin >> x;
 
@@ -56,7 +56,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		default:
 			cout << "Error. Please enter a number 1-5";
 		}
-	} while (x != 5);
+	} while (x != 5 && isdigit(x)); //Tests that it is not 5 and also a digit
 	return 0;
 }
 
@@ -118,12 +118,13 @@ void appendList()
 	ifstream inputFile;
 	inputFile.open("C:\\Users\\Matt Ksiazek\\Dropbox\\list.txt");
 	ofstream outputFile;
-	outputFile.open("C:\\Users\\Matt Ksiazek\\Dropbox\\temp.txt");
-	//Used to create temporary file holding old list.txt entries
-	if (inputFile)
+	outputFile.open("C:\\Users\\Matt Ksiazek\\Dropbox\\temp.txt"); //Used to create temporary file holding old list.txt entries
+	if (inputFile.is_open)
 	{
-		while (inputFile >> addToNewList) //boolean test to read from file
-			outputFile << addToNewList << endl << endl;
+		while (getline(in, items))
+		  {
+		    cout << items << endl;
+		  }
 	}
 	else // the file could not be opened or found
 	{
@@ -187,7 +188,7 @@ void removeList()
 		return 0;*/
 }
 
-void printList()
+void textList()
 {
-	cout << "This is printing a list";
+	cout << "This is texting a list"; // This is still a work in progress
 }
