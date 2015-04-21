@@ -142,7 +142,7 @@ void appendList()
 	inputFile.open("C:\\Users\\Matt Ksiazek\\Dropbox\\list.txt");
 	ofstream outputFile;
 	outputFile.open("C:\\Users\\Matt Ksiazek\\Dropbox\\temp.txt"); //Used to create temporary file holding old list.txt entries
-	if (inputFile.is_open)
+	if (inputFile.is_open())
 	{
 		while (getline(cin, items))
 		  {
