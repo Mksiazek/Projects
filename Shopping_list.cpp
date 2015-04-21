@@ -47,7 +47,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			removeList();
 			break;
 		case 5:
-			printList();
+			textList();
 			break;
 		case 6:
 			cout << "Exiting program";
@@ -55,7 +55,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		default:
 			cout << "Error. Please enter a number 1-5";
 		}
-	} while (x != 6);
+	} while (choice != 6);
 	return 0;
 }
 
@@ -144,7 +144,7 @@ void appendList()
 	outputFile.open("C:\\Users\\Matt Ksiazek\\Dropbox\\temp.txt"); //Used to create temporary file holding old list.txt entries
 	if (inputFile.is_open)
 	{
-		while (getline(in, items))
+		while (getline(cin, items))
 		  {
 		    cout << items << endl;
 		  }
