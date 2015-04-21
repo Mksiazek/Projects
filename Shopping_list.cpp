@@ -15,6 +15,8 @@
 
 using namespace std;
 
+void displayMenu();
+int getChoice();
 void createList();
 void viewList();
 void appendList();
@@ -24,16 +26,13 @@ void textList();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	cout << "Welcome to the shopping list\n";
-	int x = 1;
+	int choice;
 	do
 	{
-		cout << "What would you like to do?\n"
-			<< "1.) Create a new list\n2.) View from the list\n3.) Append to the list\n4.) Remove the list\n5.) Text the list to the phone\n6.) Exit\n";
+		displayMenu();
+		choice = getChoice();
 
-		cin >> x;
-
-		switch (x)
+		switch (choice)
 		{
 		case 1:
 			createList();
@@ -56,8 +55,32 @@ int _tmain(int argc, _TCHAR* argv[])
 		default:
 			cout << "Error. Please enter a number 1-5";
 		}
-	} while (x != 5 && isdigit(x)); //Tests that it is not 5 and also a digit
+	} while (x != 6);
 	return 0;
+}
+
+void displayMenu()
+{
+	system("cls"); //Clear the screen
+	cout << "Welcome to the shopping list\n";
+	cout << "What would you like to do?\n"
+		 << "1.) Create a new list\n2.) View from the list\n"
+		 << "3.) Append to the list\n4.) Remove the list\n5.)"
+		 << "Text the list to the phone\n6.) Exit\n";
+}
+
+
+int getChoice()
+{
+	int choice;
+
+	cin >> choice;
+	while (choice < 1 || choice > 7)
+	{
+		cout << "The only valid choices are 1-4. Please re-enter. ";
+		cin >> choice;
+	}
+	return choice;
 }
 
 void createList()
